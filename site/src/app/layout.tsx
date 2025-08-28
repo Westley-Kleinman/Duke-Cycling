@@ -14,7 +14,8 @@ export const metadata: Metadata = {
   },
   description:
     "Official website for Duke Club Cycling. Group rides, collegiate racing, events, routes, sponsors, and how to join.",
-  metadataBase: new URL("https://example.com"),
+  // Update to your GH Pages URL once enabled
+  metadataBase: new URL("https://westley-kleinman.github.io/Duke-Cycling"),
   openGraph: {
     title: site.name,
     description:
