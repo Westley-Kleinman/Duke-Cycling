@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --duke-50: #eef2ff;
+  --duke-100: #e0e7ff;
+  --duke-200: #c7d2fe;
+  --duke-300: #a5b4fc;
+  --duke-600: #4338ca;
+  --duke-700: #3730a3;
+}
+
+/* Custom inline variables removed; using plain CSS variables + utilities */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.max-w-content { max-width: 1200px; }
+.text-duke-700 { color: var(--duke-700); }
+.bg-duke-700 { background-color: var(--duke-700); }
+.hover\:bg-duke-800:hover { background-color: #312e81; }
+.from-duke-300 { --tw-gradient-from: var(--duke-300) var(--tw-gradient-from-position); --tw-gradient-to: rgb(165 180 252 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.to-duke-600 { --tw-gradient-to: var(--duke-600) var(--tw-gradient-to-position); }
+.shadow-card { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+
