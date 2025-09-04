@@ -1,0 +1,48 @@
+name: Ride submission
+description: Propose a club ride for the calendar
+labels: [ride]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Ride title
+      placeholder: e.g., Campus Social Spin
+    validations:
+      required: true
+  - type: input
+    id: start
+    attributes:
+      label: Start date/time (ISO)
+      placeholder: 2025-09-04T18:00:00-04:00
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - social
+        - training
+        - practice
+        - race
+        - other
+  - type: input
+    id: location
+    attributes:
+      label: Start location
+      placeholder: BC Plaza
+  - type: input
+    id: pace
+    attributes:
+      label: Pace
+      placeholder: A/B/C or mph
+  - type: input
+    id: route
+    attributes:
+      label: Route URL
+      placeholder: https://ridewithgps.com/routes/123
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      placeholder: Any details riders should know
