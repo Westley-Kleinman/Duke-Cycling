@@ -10,19 +10,12 @@ export const site = {
   address: "Duke University, Durham, NC",
   calendarEmbedUrl: "", // e.g. public Google Calendar embed URL
   nav: [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Team", href: "/team" },
-    { label: "Rides", href: "/rides" },
-    { label: "Racing", href: "/racing" },
-    { label: "Events", href: "/events" },
-    { label: "Routes", href: "/routes" },
-    { label: "Sponsors", href: "/sponsors" },
-    { label: "Resources", href: "/resources" },
-    { label: "Calendar", href: "/calendar" },
-    { label: "News", href: "/news" },
-    { label: "Join", href: "/join" },
-    { label: "Contact", href: "/contact" },
+  { label: "Home", href: "/" },
+  { label: "Rides", href: "/rides" },
+  { label: "Races", href: "/races" },
+  { label: "Local", href: "/local" },
+  { label: "Team", href: "/team" },
+  { label: "Sponsors", href: "/sponsors" },
   ] as NavItem[],
 };
 
