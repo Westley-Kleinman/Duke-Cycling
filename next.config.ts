@@ -1,13 +1,10 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
-
+// GitHub Actions (configure-pages@v5 with static_site_generator: next)
+// will automatically inject the correct basePath for the repository.
+// Do NOT set basePath here to avoid double-prefixing assets in production.
 const nextConfig: NextConfig = {
-  // Enable static export for GitHub Pages
   output: "export",
-  // Use basePath only in prod (GitHub Pages). Local dev runs at "/".
-  basePath: isProd ? "/Duke-Cycling" : undefined,
-  // Ensure any images are not optimized server-side (export-compatible)
   images: { unoptimized: true },
 };
 
