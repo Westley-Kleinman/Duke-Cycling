@@ -31,14 +31,14 @@ export default function RideCard({ ride }: { ride: Ride }) {
   }
   
   return (
-    <div className="modern-card hover-lift group cursor-pointer">
+    <div className="bg-white bg-opacity-95 backdrop-blur-sm border border-white border-opacity-20 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
       {/* Header with date and type */}
       <div className="flex items-center justify-between mb-4">
         <div className="text-sm font-medium text-slate-500 bg-slate-50 px-3 py-1 rounded-full">
           {date}
         </div>
         {ride.type && (
-          <div className="flex items-center gap-1 text-xs text-duke-blue bg-duke-blue/10 px-2 py-1 rounded-full">
+          <div className="flex items-center gap-1 text-xs text-blue-900 bg-blue-100 px-2 py-1 rounded-full">
             {getTypeIcon(ride.type)}
             <span>{ride.type}</span>
           </div>
@@ -46,7 +46,7 @@ export default function RideCard({ ride }: { ride: Ride }) {
       </div>
       
       {/* Title */}
-      <h3 className="font-bold text-lg text-duke-blue mb-3 group-hover:text-duke-blue-light transition-colors line-clamp-2">
+      <h3 className="font-bold text-lg text-blue-900 mb-3 group-hover:text-blue-700 transition-colors line-clamp-2">
         {ride.title}
       </h3>
       
@@ -96,7 +96,7 @@ export default function RideCard({ ride }: { ride: Ride }) {
             href={ride.routeUrl} 
             target="_blank" 
             rel="noreferrer"
-            className="inline-flex items-center gap-2 text-duke-blue font-semibold hover:text-duke-blue-light transition-colors group"
+            className="inline-flex items-center gap-2 text-blue-900 font-semibold hover:text-blue-700 transition-colors group"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

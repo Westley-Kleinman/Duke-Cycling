@@ -70,10 +70,10 @@ notes: ${formData.notes || 'No additional notes.'}`
   }
 
   return (
-    <div className="min-h-screen py-20">
-      <div className="max-w-content mx-auto px-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-20">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h1 className="heading-lg text-gradient mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent mb-6">
             Submit a Ride
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
@@ -82,7 +82,7 @@ notes: ${formData.notes || 'No additional notes.'}`
         </div>
 
         <div className="max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="modern-card">
+          <form onSubmit={handleSubmit} className="bg-white bg-opacity-95 backdrop-blur-sm border border-white border-opacity-20 rounded-3xl p-8 shadow-xl">
             <div className="grid md:grid-cols-2 gap-6">
               {/* Title */}
               <div className="md:col-span-2">
@@ -230,7 +230,7 @@ notes: ${formData.notes || 'No additional notes.'}`
               <button
                 type="submit"
                 disabled={isSubmitting || !formData.title || !formData.start || !formData.location}
-                className={`btn-primary px-8 py-4 text-lg ${
+                className={`bg-gradient-to-r from-blue-900 to-blue-700 text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-lg ${
                   isSubmitting || !formData.title || !formData.start || !formData.location
                     ? 'opacity-50 cursor-not-allowed'
                     : ''
@@ -281,8 +281,8 @@ notes: ${formData.notes || 'No additional notes.'}`
           </form>
 
           {/* Help Text */}
-          <div className="mt-8 modern-card bg-blue-50/50">
-            <h3 className="font-semibold text-duke-blue mb-3">Submission Guidelines</h3>
+          <div className="mt-8 bg-blue-50 bg-opacity-90 backdrop-blur-sm border border-blue-200 border-opacity-30 rounded-2xl p-6">
+            <h3 className="font-semibold text-blue-900 mb-3">Submission Guidelines</h3>
             <ul className="text-sm text-slate-600 space-y-2">
               <li>• Submit rides at least 24 hours in advance</li>
               <li>• Include clear meeting location and time</li>
