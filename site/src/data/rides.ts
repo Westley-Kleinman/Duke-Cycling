@@ -1,19 +1,7 @@
 import type { Ride } from "@/types"
 
 // Static seed data (fallback)
-export const seedRides: Ride[] = [
-  {
-    id: "seed-1",
-    title: "Campus Social Spin",
-    start: new Date().toISOString(),
-    durationMins: 60,
-    distanceMiles: 15,
-    pace: "No-drop",
-    type: "social",
-    startLocation: "BC Plaza",
-    notes: "Helmets required. Lights for evening."
-  },
-]
+export const seedRides: Ride[] = []
 
 // Simple GitHub Issues ingestion (public repo issues used as submissions)
 // Users submit via an issue template URL; we render issues labeled 'ride'.
