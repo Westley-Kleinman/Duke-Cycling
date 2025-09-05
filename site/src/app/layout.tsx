@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
   <body className={inter.className}>
-        <div className="min-h-dvh flex flex-col">
+        <div className="min-h-screen flex flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

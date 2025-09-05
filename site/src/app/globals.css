@@ -403,6 +403,10 @@ textarea.form-input {
 .bg-gray-50 { background-color: #f9fafb; }
 .bg-blue-50 { background-color: #eff6ff; }
 .bg-green-50 { background-color: #f0fdf4; }
+.bg-red-500 { background-color: #ef4444; }
+.bg-purple-500 { background-color: #8b5cf6; }
+.bg-orange-500 { background-color: #f97316; }
+.bg-green-600 { background-color: #16a34a; }
 
 .border { border-width: 1px; }
 .border-gray-200 { border-color: #e5e7eb; }
