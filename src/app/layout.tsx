@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   },
   description:
     "Official website for Duke Club Cycling. Group rides, collegiate racing, events, routes, sponsors, and how to join.",
-  // Update to your GH Pages URL once enabled
-  metadataBase: new URL("https://westley-kleinman.github.io/Duke-Cycling"),
+  // Custom domain configured via GitHub Pages
+  metadataBase: new URL("https://dukecycling.dev"),
   openGraph: {
     title: site.name,
     description:

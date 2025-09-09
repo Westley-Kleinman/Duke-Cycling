@@ -19,42 +19,37 @@ export default function SubmitRidePage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus('idle')
     
     try {
-      // Format the GitHub issue body
-      const issueBody = `# New Ride Submission
-title: ${formData.title}
-start: ${formData.start}
-type: ${formData.type}
-pace: ${formData.pace}
-location: ${formData.location}
-${formData.route ? `route: ${formData.route}` : ''}
-${formData.distance ? `distance: ${formData.distance} miles` : ''}
-notes: ${formData.notes || 'No additional notes.'}`
+      const response = await fetch('https://formspree.io/f/xandvqvg', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // Create GitHub issue URL
-      const issueUrl = `https://github.com/Westley-Kleinman/Duke-Cycling/issues/new?labels=ride&title=${encodeURIComponent(`Ride: ${formData.title}`)}&body=${encodeURIComponent(issueBody)}`
-      
-      // Open in new tab
-      window.open(issueUrl, '_blank')
-      
-      setSubmitStatus('success')
-      
-      // Reset form after successful submission
-      setTimeout(() => {
-        setFormData({
-          title: '',
-          start: '',
-          type: 'social',
-          pace: 'B',
-          location: '',
-          route: '',
-          notes: '',
-          distance: ''
-        })
-        setSubmitStatus('idle')
-      }, 3000)
-      
+      if (response.ok) {
+        setSubmitStatus('success')
+        // Reset form after successful submission
+        setTimeout(() => {
+          setFormData({
+            title: '',
+            start: '',
+            type: 'social',
+            pace: 'B',
+            location: '',
+            route: '',
+            notes: '',
+            distance: ''
+          })
+          setSubmitStatus('idle')
+        }, 4000)
+      } else {
+        throw new Error('Form submission failed')
+      }
     } catch (error) {
       setSubmitStatus('error')
     } finally {
@@ -83,6 +78,20 @@ notes: ${formData.notes || 'No additional notes.'}`
 
         <div className="max-w-2xl mx-auto">
           <form onSubmit={handleSubmit} className="bg-white bg-opacity-95 backdrop-blur-sm border border-white border-opacity-20 rounded-3xl p-8 shadow-xl">
+            
+            {submitStatus === 'success' && (
+              <div className="md:col-span-2 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-xl relative mb-6" role="alert">
+                <strong className="font-bold">Success!</strong>
+                <span className="block sm:inline"> Your ride has been submitted for review. Thanks!</span>
+              </div>
+            )}
+            {submitStatus === 'error' && (
+              <div className="md:col-span-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl relative mb-6" role="alert">
+                <strong className="font-bold">Error!</strong>
+                <span className="block sm:inline"> Something went wrong. Please try again later.</span>
+              </div>
+            )}
+
             <div className="grid md:grid-cols-2 gap-6">
               {/* Title */}
               <div className="md:col-span-2">
@@ -101,10 +110,10 @@ notes: ${formData.notes || 'No additional notes.'}`
                 />
               </div>
 
-              {/* Date & Time */}
-              <div>
+              {/* Date/Time */}
+              <div className="md:col-span-2">
                 <label htmlFor="start" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Date & Time *
+                  Date & Start Time *
                 </label>
                 <input
                   type="datetime-local"
@@ -117,62 +126,45 @@ notes: ${formData.notes || 'No additional notes.'}`
                 />
               </div>
 
-              {/* Type */}
+              {/* Ride Type */}
               <div>
                 <label htmlFor="type" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Ride Type
+                  Ride Type *
                 </label>
                 <select
                   id="type"
                   name="type"
+                  required
                   value={formData.type}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all bg-white"
                 >
                   <option value="social">Social</option>
                   <option value="training">Training</option>
-                  <option value="racing">Racing</option>
-                  <option value="road">Road</option>
-                  <option value="mountain">Mountain</option>
-                  <option value="gravel">Gravel</option>
+                  <option value="race">Race</option>
+                  <option value="special-event">Special Event</option>
                 </select>
               </div>
 
               {/* Pace */}
               <div>
                 <label htmlFor="pace" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Pace Group
+                  Pace Group *
                 </label>
                 <select
                   id="pace"
                   name="pace"
+                  required
                   value={formData.pace}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all bg-white"
                 >
-                  <option value="A">A (Fast/Competitive)</option>
-                  <option value="B">B (Moderate)</option>
-                  <option value="C">C (Relaxed/Social)</option>
-                  <option value="mixed">Mixed Pace</option>
+                  <option value="A">A (&gt;21 mph)</option>
+                  <option value="B">B (18-21 mph)</option>
+                  <option value="C">C (15-18 mph)</option>
+                  <option value="D">D (&lt;15 mph)</option>
+                  <option value="all">All Paces</option>
                 </select>
-              </div>
-
-              {/* Distance */}
-              <div>
-                <label htmlFor="distance" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Distance (miles)
-                </label>
-                <input
-                  type="number"
-                  id="distance"
-                  name="distance"
-                  value={formData.distance}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all"
-                  placeholder="e.g., 25"
-                  min="1"
-                  max="200"
-                />
               </div>
 
               {/* Location */}
@@ -188,14 +180,14 @@ notes: ${formData.notes || 'No additional notes.'}`
                   value={formData.location}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all"
-                  placeholder="e.g., BC Plaza, Duke Campus"
+                  placeholder="e.g., Duke Chapel"
                 />
               </div>
 
-              {/* Route URL */}
-              <div className="md:col-span-2">
+              {/* Route Link */}
+              <div>
                 <label htmlFor="route" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Route URL (optional)
+                  Route Link
                 </label>
                 <input
                   type="url"
@@ -204,7 +196,23 @@ notes: ${formData.notes || 'No additional notes.'}`
                   value={formData.route}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all"
-                  placeholder="https://ridewithgps.com/routes/..."
+                  placeholder="https://strava.com/routes/..."
+                />
+              </div>
+
+              {/* Distance */}
+              <div>
+                <label htmlFor="distance" className="block text-sm font-semibold text-slate-700 mb-2">
+                  Distance (miles)
+                </label>
+                <input
+                  type="number"
+                  id="distance"
+                  name="distance"
+                  value={formData.distance}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all"
+                  placeholder="e.g., 40"
                 />
               </div>
 
@@ -219,78 +227,22 @@ notes: ${formData.notes || 'No additional notes.'}`
                   rows={4}
                   value={formData.notes}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all resize-none"
-                  placeholder="Any additional details about the ride..."
-                />
+                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all"
+                  placeholder="e.g., No-drop ride, bring lights, etc."
+                ></textarea>
               </div>
             </div>
 
-            {/* Submit Button */}
-            <div className="mt-8 flex justify-center">
+            <div className="mt-8 text-center">
               <button
                 type="submit"
-                disabled={isSubmitting || !formData.title || !formData.start || !formData.location}
-                className={`bg-gradient-to-r from-blue-900 to-blue-700 text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-lg ${
-                  isSubmitting || !formData.title || !formData.start || !formData.location
-                    ? 'opacity-50 cursor-not-allowed'
-                    : ''
-                }`}
+                disabled={isSubmitting}
+                className="w-full md:w-auto btn btn-primary px-12 py-4 rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? (
-                  <span className="flex items-center gap-2">
-                    <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Submitting...
-                  </span>
-                ) : (
-                  'Submit Ride'
-                )}
+                {isSubmitting ? 'Submitting...' : 'Submit Ride'}
               </button>
             </div>
-
-            {/* Status Messages */}
-            {submitStatus === 'success' && (
-              <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-xl">
-                <div className="flex items-center gap-2 text-green-800">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="font-semibold">Ride submitted successfully!</span>
-                </div>
-                <p className="text-green-700 mt-1">
-                  Your ride has been submitted for review. Check GitHub for updates.
-                </p>
-              </div>
-            )}
-
-            {submitStatus === 'error' && (
-              <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-xl">
-                <div className="flex items-center gap-2 text-red-800">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                  <span className="font-semibold">Submission failed</span>
-                </div>
-                <p className="text-red-700 mt-1">
-                  Please try again or contact us if the problem persists.
-                </p>
-              </div>
-            )}
           </form>
-
-          {/* Help Text */}
-          <div className="mt-8 bg-blue-50 bg-opacity-90 backdrop-blur-sm border border-blue-200 border-opacity-30 rounded-2xl p-6">
-            <h3 className="font-semibold text-blue-900 mb-3">Submission Guidelines</h3>
-            <ul className="text-sm text-slate-600 space-y-2">
-              <li>• Submit rides at least 24 hours in advance</li>
-              <li>• Include clear meeting location and time</li>
-              <li>• Specify appropriate pace for the intended group</li>
-              <li>• Provide route details when possible</li>
-              <li>• All riders must follow Duke Club Cycling safety guidelines</li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>

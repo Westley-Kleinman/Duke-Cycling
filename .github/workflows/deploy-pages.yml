@@ -1,0 +1,13 @@
+## Disabled duplicate workflow
+## This file is intentionally neutered. Use .github/workflows/nextjs.yml as the single deployment workflow.
+name: disabled-duplicate-workflow
+
+on:
+	workflow_dispatch: # kept for visibility, does nothing meaningful
+
+jobs:
+	noop:
+		runs-on: ubuntu-latest
+		steps:
+			- name: Notice
+				run: echo "This workflow is deprecated. Use nextjs.yml for deployments."
