@@ -6,13 +6,13 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="hero">
+  <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <h1 className="text-5xl font-extrabold text-gradient mb-6">
+            <h1 className="text-5xl font-extrabold text-gradient mb-4">
               Duke Club Cycling
             </h1>
-            <p className="text-xl text-slate-700 mb-8">
+            <p className="text-xl text-slate-700 mb-6">
               Join Duke&rsquo;s premier cycling community. Whether you&rsquo;re training for competition 
               or exploring the Triangle&rsquo;s scenic routes, we ride together as one team.
             </p>
@@ -35,7 +35,7 @@ export default function Home() {
       </section>
 
       {/* Rides Section */}
-      <section className="py-20 bg-white">
+  <section className="py-12 bg-white">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gradient mb-6">
@@ -60,7 +60,7 @@ export default function Home() {
       </section>
 
       {/* Local Resources Section */}
-      <section className="py-20 bg-gray-50">
+  <section className="py-12 bg-gray-50">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gradient mb-6">
@@ -133,7 +133,7 @@ export default function Home() {
       </section>
 
       {/* Explore More Section */}
-      <section className="py-20 bg-white">
+  <section className="py-12 bg-white">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gradient mb-6">
