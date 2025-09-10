@@ -99,7 +99,7 @@ export default function RidesPage() {
       <div className="mt-16">
         <h2 className="text-2xl font-bold mb-4">Local Routes</h2>
         <p className="text-slate-700 max-w-prose mb-6">
-          All of these rides leave from Duke's campus. These are established routes from the Duke Cycling community.
+          All of these rides leave from Duke&rsquo;s campus. These are established routes from the Duke Cycling community.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

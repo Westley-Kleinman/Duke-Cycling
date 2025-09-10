@@ -50,7 +50,7 @@ export default function SubmitRidePage() {
       } else {
         throw new Error('Form submission failed')
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
