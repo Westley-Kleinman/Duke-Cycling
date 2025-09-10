@@ -14,7 +14,6 @@ export const site = {
   { label: "Rides", href: "/rides" },
   { label: "Races", href: "/races" },
   { label: "History", href: "/history" },
-  { label: "Local", href: "/local" },
   { label: "Team", href: "/team" },
   { label: "Sponsors", href: "/sponsors" },
   ] as NavItem[],

@@ -1,10 +1,7 @@
 export default function TeamPage() {
   const officers = [
-    { name: "President", person: "TBD" },
-    { name: "Vice President", person: "TBD" },
+    { name: "President & Safety Officer", person: "TBD" },
     { name: "Treasurer", person: "TBD" },
-    { name: "Racing Director", person: "TBD" },
-    { name: "Ride Leaders", person: "TBD" },
   ]
   return (
     <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-12">
