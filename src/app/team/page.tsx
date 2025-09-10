@@ -1,7 +1,8 @@
 export default function TeamPage() {
   const officers = [
-    { name: "President & Safety Officer", person: "TBD" },
+    { name: "President", person: "TBD" },
     { name: "Treasurer", person: "TBD" },
+    { name: "Safety Officer", person: "TBD" },
   ]
   return (
     <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-12">
