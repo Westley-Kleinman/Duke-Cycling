@@ -1,8 +1,10 @@
 "use client"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { supabase } from "@/lib/supabase"
 
 export default function SubmitRidePage() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     title: '',
     start: '',
@@ -25,78 +27,78 @@ export default function SubmitRidePage() {
     console.log('Form submitted with data:', formData)
     
     try {
-      // Check if Supabase is configured
-      if (!supabase) {
-        console.error('Supabase client not initialized - environment variable missing')
-        alert('Database not configured. Please contact the administrator.')
-        setSubmitStatus('error')
-        return
-      }
-
-      console.log('Attempting to save to database...')
+      let databaseSaved = false;
       
-      // Save to Supabase database
-      const { error } = await supabase
-        .from('rides')
-        .insert([
-          {
-            title: formData.title,
-            start_time: formData.start,
-            type: formData.type,
-            pace: formData.pace,
-            location: formData.location,
-            route: formData.route,
-            distance: formData.distance,
-            notes: formData.notes,
-            approved: false // Requires admin approval
-          }
-        ])
+      // Try to save to Supabase database if available
+      if (supabase) {
+        console.log('Attempting to save to database...')
+        
+        const { error } = await supabase
+          .from('rides')
+          .insert([
+            {
+              title: formData.title,
+              start_time: formData.start,
+              type: formData.type,
+              pace: formData.pace,
+              location: formData.location,
+              route: formData.route,
+              distance: formData.distance,
+              notes: formData.notes,
+              approved: false // Requires admin approval
+            }
+          ])
 
-      if (error) {
-        console.error('Supabase error:', error)
-        throw error
+        if (error) {
+          console.error('Supabase error:', error)
+        } else {
+          console.log('Successfully saved to database')
+          databaseSaved = true;
+        }
+      } else {
+        console.log('Supabase not configured, skipping database save')
       }
 
-      console.log('Successfully saved to database')
+      // Send notification email via Formspree
+      console.log('Sending email notification...')
+      const formspreeResponse = await fetch('https://formspree.io/f/xandvqvg', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          subject: `New Ride Submission: ${formData.title}`,
+          title: formData.title,
+          start_time: formData.start,
+          type: formData.type,
+          pace: formData.pace,
+          location: formData.location,
+          route: formData.route,
+          distance: formData.distance,
+          notes: formData.notes,
+          database_saved: databaseSaved,
+          message: databaseSaved 
+            ? 'New ride submitted and saved to database - check admin panel for approval' 
+            : 'New ride submitted via email - database not available'
+        }),
+      });
 
-      // Also send notification email via Formspree (optional)
-      try {
-        await fetch('https://formspree.io/f/xandvqvg', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-          body: JSON.stringify({
-            ...formData,
-            message: 'New ride submitted - check admin panel for approval'
-          }),
-        });
-        console.log('Email notification sent')
-      } catch (emailError) {
-        console.warn('Email notification failed, but ride was saved:', emailError)
+      if (!formspreeResponse.ok) {
+        throw new Error('Failed to submit form');
       }
-
+      
+      console.log('Email notification sent successfully')
       setSubmitStatus('success')
-      console.log('Form submission completed successfully')
-      // Reset form after successful submission
+      
+      // Show success message and redirect after 2 seconds
       setTimeout(() => {
-        setFormData({
-          title: '',
-          start: '',
-          type: 'social',
-          pace: 'B',
-          location: '',
-          route: '',
-          notes: '',
-          distance: ''
-        })
-        setSubmitStatus('idle')
-      }, 4000)
+        router.push('/rides')
+      }, 2000)
+      
     } catch (error) {
       console.error('Form submission error:', error)
       setSubmitStatus('error')
-    } finally {
       setIsSubmitting(false)
     }
   }
@@ -126,13 +128,13 @@ export default function SubmitRidePage() {
             {submitStatus === 'success' && (
               <div className="md:col-span-2 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-xl relative mb-6" role="alert">
                 <strong className="font-bold">Success!</strong>
-                <span className="block sm:inline"> Your ride has been submitted for review. Thanks!</span>
+                <span className="block sm:inline"> Your ride has been submitted for review. Redirecting to rides page...</span>
               </div>
             )}
             {submitStatus === 'error' && (
               <div className="md:col-span-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl relative mb-6" role="alert">
                 <strong className="font-bold">Error!</strong>
-                <span className="block sm:inline"> Something went wrong. Please try again later.</span>
+                <span className="block sm:inline"> Something went wrong. Please try again or contact us directly.</span>
               </div>
             )}
 
