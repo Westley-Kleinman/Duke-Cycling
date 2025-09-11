@@ -118,7 +118,7 @@ export default function SubmitRidePage() {
             Submit a Ride
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Propose a club ride for the community. Your submission will be reviewed and added to our calendar.
+            Propose a club ride for the community. Your submission will be added to our calendar immediately.
           </p>
         </div>
 
