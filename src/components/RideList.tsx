@@ -5,8 +5,9 @@ import type { Ride } from "@/types"
 
 // server component
 async function getApprovedRides(): Promise<Ride[]> {
-  // During build time, return empty array to prevent build failures
-  if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY === 'dummy-key-for-build') {
+  // If Supabase is not configured, return empty array
+  if (!supabase) {
+    console.warn('Supabase not configured, returning empty rides list')
     return []
   }
 

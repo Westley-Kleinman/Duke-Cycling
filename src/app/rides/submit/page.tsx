@@ -25,9 +25,9 @@ export default function SubmitRidePage() {
     console.log('Form submitted with data:', formData)
     
     try {
-      // Check if we have a valid Supabase key
-      if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY === 'your_supabase_anon_key_here') {
-        console.error('Supabase key not configured properly')
+      // Check if Supabase is configured
+      if (!supabase) {
+        console.error('Supabase client not initialized - environment variable missing')
         alert('Database not configured. Please contact the administrator.')
         setSubmitStatus('error')
         return

@@ -1,9 +1,15 @@
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = 'https://wxdcxvsjcljthzyfkjju.supabase.co'
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'dummy-key-for-build'
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-export const supabase = createClient(supabaseUrl, supabaseKey)
+if (!supabaseKey) {
+  console.error('NEXT_PUBLIC_SUPABASE_ANON_KEY environment variable is not set')
+}
+
+export const supabase = supabaseKey 
+  ? createClient(supabaseUrl, supabaseKey)
+  : null
 
 // Type definitions for our rides table
 export interface Ride {
