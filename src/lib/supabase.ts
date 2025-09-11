@@ -7,6 +7,7 @@ if (!supabaseKey) {
   console.error('NEXT_PUBLIC_SUPABASE_ANON_KEY environment variable is not set')
 }
 
+// Create Supabase client - now with GitHub secret configured
 export const supabase = supabaseKey 
   ? createClient(supabaseUrl, supabaseKey)
   : null
