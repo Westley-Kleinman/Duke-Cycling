@@ -22,7 +22,19 @@ export default function SubmitRidePage() {
     setIsSubmitting(true)
     setSubmitStatus('idle')
     
+    console.log('Form submitted with data:', formData)
+    
     try {
+      // Check if we have a valid Supabase key
+      if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY === 'your_supabase_anon_key_here') {
+        console.error('Supabase key not configured properly')
+        alert('Database not configured. Please contact the administrator.')
+        setSubmitStatus('error')
+        return
+      }
+
+      console.log('Attempting to save to database...')
+      
       // Save to Supabase database
       const { error } = await supabase
         .from('rides')
@@ -41,23 +53,32 @@ export default function SubmitRidePage() {
         ])
 
       if (error) {
+        console.error('Supabase error:', error)
         throw error
       }
 
+      console.log('Successfully saved to database')
+
       // Also send notification email via Formspree (optional)
-      await fetch('https://formspree.io/f/xandvqvg', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          message: 'New ride submitted - check admin panel for approval'
-        }),
-      });
+      try {
+        await fetch('https://formspree.io/f/xandvqvg', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            ...formData,
+            message: 'New ride submitted - check admin panel for approval'
+          }),
+        });
+        console.log('Email notification sent')
+      } catch (emailError) {
+        console.warn('Email notification failed, but ride was saved:', emailError)
+      }
 
       setSubmitStatus('success')
+      console.log('Form submission completed successfully')
       // Reset form after successful submission
       setTimeout(() => {
         setFormData({
@@ -72,7 +93,8 @@ export default function SubmitRidePage() {
         })
         setSubmitStatus('idle')
       }, 4000)
-    } catch {
+    } catch (error) {
+      console.error('Form submission error:', error)
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
