@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import { supabase } from "@/lib/supabase"
 
 export default function SubmitRidePage() {
   const [formData, setFormData] = useState({
@@ -22,34 +23,55 @@ export default function SubmitRidePage() {
     setSubmitStatus('idle')
     
     try {
-      const response = await fetch('https://formspree.io/f/xandvqvg', {
+      // Save to Supabase database
+      const { error } = await supabase
+        .from('rides')
+        .insert([
+          {
+            title: formData.title,
+            start_time: formData.start,
+            type: formData.type,
+            pace: formData.pace,
+            location: formData.location,
+            route: formData.route,
+            distance: formData.distance,
+            notes: formData.notes,
+            approved: false // Requires admin approval
+          }
+        ])
+
+      if (error) {
+        throw error
+      }
+
+      // Also send notification email via Formspree (optional)
+      await fetch('https://formspree.io/f/xandvqvg', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          message: 'New ride submitted - check admin panel for approval'
+        }),
       });
 
-      if (response.ok) {
-        setSubmitStatus('success')
-        // Reset form after successful submission
-        setTimeout(() => {
-          setFormData({
-            title: '',
-            start: '',
-            type: 'social',
-            pace: 'B',
-            location: '',
-            route: '',
-            notes: '',
-            distance: ''
-          })
-          setSubmitStatus('idle')
-        }, 4000)
-      } else {
-        throw new Error('Form submission failed')
-      }
+      setSubmitStatus('success')
+      // Reset form after successful submission
+      setTimeout(() => {
+        setFormData({
+          title: '',
+          start: '',
+          type: 'social',
+          pace: 'B',
+          location: '',
+          route: '',
+          notes: '',
+          distance: ''
+        })
+        setSubmitStatus('idle')
+      }, 4000)
     } catch {
       setSubmitStatus('error')
     } finally {
