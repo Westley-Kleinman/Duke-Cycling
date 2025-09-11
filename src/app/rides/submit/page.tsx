@@ -111,37 +111,54 @@ export default function SubmitRidePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-20">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-900 to-blue-600 bg-clip-text text-transparent mb-6">
-            Submit a Ride
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+      <div className="max-w-4xl mx-auto px-6 py-16">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
+            Submit a New Ride
           </h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Propose a club ride for the community. Your submission will be added to our calendar immediately.
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            Share a ride with the Duke Cycling community. Your submission will be reviewed and added to our calendar.
           </p>
         </div>
 
-        <div className="max-w-2xl mx-auto">
-          <form onSubmit={handleSubmit} className="bg-white bg-opacity-95 backdrop-blur-sm border border-white border-opacity-20 rounded-3xl p-8 shadow-xl">
+        {/* Form Container */}
+        <div className="bg-white rounded-3xl shadow-xl border border-slate-100 p-12">
+          <form onSubmit={handleSubmit} className="space-y-8">
             
+            {/* Status Messages */}
             {submitStatus === 'success' && (
-              <div className="md:col-span-2 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-xl relative mb-6" role="alert">
-                <strong className="font-bold">Success!</strong>
-                <span className="block sm:inline"> Your ride has been submitted for review. Redirecting to rides page...</span>
+              <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 px-6 py-4 rounded-2xl flex items-center gap-3" role="alert">
+                <div className="w-5 h-5 flex-shrink-0">
+                  <svg fill="currentColor" viewBox="0 0 20 20" className="w-full h-full">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <strong className="font-bold">Success!</strong>
+                  <span className="ml-2">Your ride has been submitted. Redirecting to rides page...</span>
+                </div>
               </div>
             )}
             {submitStatus === 'error' && (
-              <div className="md:col-span-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl relative mb-6" role="alert">
-                <strong className="font-bold">Error!</strong>
-                <span className="block sm:inline"> Something went wrong. Please try again or contact us directly.</span>
+              <div className="bg-red-50 border border-red-200 text-red-800 px-6 py-4 rounded-2xl flex items-center gap-3" role="alert">
+                <div className="w-5 h-5 flex-shrink-0">
+                  <svg fill="currentColor" viewBox="0 0 20 20" className="w-full h-full">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <strong className="font-bold">Error!</strong>
+                  <span className="ml-2">Something went wrong. Please try again or contact us directly.</span>
+                </div>
               </div>
             )}
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               {/* Title */}
               <div className="md:col-span-2">
-                <label htmlFor="title" className="block text-sm font-semibold text-slate-700 mb-2">
+                <label htmlFor="title" className="block text-sm font-bold text-slate-800 mb-3">
                   Ride Title *
                 </label>
                 <input
@@ -151,14 +168,14 @@ export default function SubmitRidePage() {
                   required
                   value={formData.title}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all"
-                  placeholder="e.g., Morning Training Ride"
+                  className="w-full px-5 py-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900 font-medium"
+                  placeholder="e.g., Saturday Morning Training Ride"
                 />
               </div>
 
               {/* Date/Time */}
               <div className="md:col-span-2">
-                <label htmlFor="start" className="block text-sm font-semibold text-slate-700 mb-2">
+                <label htmlFor="start" className="block text-sm font-bold text-slate-800 mb-3">
                   Date & Start Time *
                 </label>
                 <input
@@ -168,13 +185,13 @@ export default function SubmitRidePage() {
                   required
                   value={formData.start}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all"
+                  className="w-full px-5 py-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900 font-medium"
                 />
               </div>
 
               {/* Ride Type */}
               <div>
-                <label htmlFor="type" className="block text-sm font-semibold text-slate-700 mb-2">
+                <label htmlFor="type" className="block text-sm font-bold text-slate-800 mb-3">
                   Ride Type *
                 </label>
                 <select
@@ -183,7 +200,7 @@ export default function SubmitRidePage() {
                   required
                   value={formData.type}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all bg-white"
+                  className="w-full px-5 py-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900 font-medium bg-white"
                 >
                   <option value="social">Social</option>
                   <option value="training">Training</option>
@@ -194,7 +211,7 @@ export default function SubmitRidePage() {
 
               {/* Pace */}
               <div>
-                <label htmlFor="pace" className="block text-sm font-semibold text-slate-700 mb-2">
+                <label htmlFor="pace" className="block text-sm font-bold text-slate-800 mb-3">
                   Pace Group *
                 </label>
                 <select
@@ -203,19 +220,19 @@ export default function SubmitRidePage() {
                   required
                   value={formData.pace}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all bg-white"
+                  className="w-full px-5 py-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900 font-medium bg-white"
                 >
-                  <option value="A">A (&gt;21 mph)</option>
+                  <option value="A">A (21+ mph)</option>
                   <option value="B">B (18-21 mph)</option>
                   <option value="C">C (15-18 mph)</option>
-                  <option value="D">D (&lt;15 mph)</option>
+                  <option value="D">D (Under 15 mph)</option>
                   <option value="all">All Paces</option>
                 </select>
               </div>
 
               {/* Location */}
               <div className="md:col-span-2">
-                <label htmlFor="location" className="block text-sm font-semibold text-slate-700 mb-2">
+                <label htmlFor="location" className="block text-sm font-bold text-slate-800 mb-3">
                   Start Location *
                 </label>
                 <input
@@ -225,15 +242,16 @@ export default function SubmitRidePage() {
                   required
                   value={formData.location}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all"
-                  placeholder="e.g., Duke Chapel"
+                  className="w-full px-5 py-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900 font-medium"
+                  placeholder="e.g., Duke Chapel Parking Lot"
                 />
               </div>
 
               {/* Route Link */}
               <div>
-                <label htmlFor="route" className="block text-sm font-semibold text-slate-700 mb-2">
+                <label htmlFor="route" className="block text-sm font-bold text-slate-800 mb-3">
                   Route Link
+                  <span className="text-slate-500 font-normal ml-1">(optional)</span>
                 </label>
                 <input
                   type="url"
@@ -241,15 +259,16 @@ export default function SubmitRidePage() {
                   name="route"
                   value={formData.route}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all"
+                  className="w-full px-5 py-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900 font-medium"
                   placeholder="https://strava.com/routes/..."
                 />
               </div>
 
               {/* Distance */}
               <div>
-                <label htmlFor="distance" className="block text-sm font-semibold text-slate-700 mb-2">
-                  Distance (miles)
+                <label htmlFor="distance" className="block text-sm font-bold text-slate-800 mb-3">
+                  Distance
+                  <span className="text-slate-500 font-normal ml-1">(miles, optional)</span>
                 </label>
                 <input
                   type="number"
@@ -257,15 +276,18 @@ export default function SubmitRidePage() {
                   name="distance"
                   value={formData.distance}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all"
+                  className="w-full px-5 py-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900 font-medium"
                   placeholder="e.g., 40"
+                  min="1"
+                  max="200"
                 />
               </div>
 
               {/* Notes */}
               <div className="md:col-span-2">
-                <label htmlFor="notes" className="block text-sm font-semibold text-slate-700 mb-2">
+                <label htmlFor="notes" className="block text-sm font-bold text-slate-800 mb-3">
                   Additional Notes
+                  <span className="text-slate-500 font-normal ml-1">(optional)</span>
                 </label>
                 <textarea
                   id="notes"
@@ -273,20 +295,31 @@ export default function SubmitRidePage() {
                   rows={4}
                   value={formData.notes}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-duke-blue focus:border-transparent transition-all"
-                  placeholder="e.g., No-drop ride, bring lights, etc."
+                  className="w-full px-5 py-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900 font-medium resize-none"
+                  placeholder="e.g., No-drop ride, bring lights for early morning start, coffee stop planned..."
                 ></textarea>
               </div>
             </div>
 
-            <div className="mt-8 text-center">
+            {/* Submit Button */}
+            <div className="mt-12 text-center">
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full md:w-auto btn btn-primary px-12 py-4 rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-5 px-12 rounded-2xl text-lg transition-all duration-200 transform hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:hover:shadow-none min-w-[200px]"
               >
-                {isSubmitting ? 'Submitting...' : 'Submit Ride'}
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center gap-3">
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Submitting...</span>
+                  </div>
+                ) : (
+                  'Submit Ride'
+                )}
               </button>
+              <p className="text-slate-500 text-sm mt-4">
+                Your ride will be reviewed and published to the calendar
+              </p>
             </div>
           </form>
         </div>
