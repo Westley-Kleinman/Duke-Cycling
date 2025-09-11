@@ -13,6 +13,12 @@ export default function AdminPage() {
   }, [])
 
   const fetchPendingRides = async () => {
+    if (!supabase) {
+      console.error('Supabase not configured')
+      setLoading(false)
+      return
+    }
+    
     const { data, error } = await supabase
       .from('rides')
       .select('*')
@@ -28,6 +34,11 @@ export default function AdminPage() {
   }
 
   const approveRide = async (id: number) => {
+    if (!supabase) {
+      alert('Database not configured')
+      return
+    }
+    
     setActionLoading(id)
     const { error } = await supabase
       .from('rides')
@@ -44,6 +55,11 @@ export default function AdminPage() {
   }
 
   const deleteRide = async (id: number) => {
+    if (!supabase) {
+      alert('Database not configured')
+      return
+    }
+    
     setActionLoading(id)
     const { error } = await supabase
       .from('rides')
