@@ -8,73 +8,73 @@ const localRoutes: Route[] = [
     miles: 25,
     name: "Out Craig to St. Mary's",
     description: "Short classic loop via Craig Rd to St. Mary's; great for easy spins.",
-    href: "https://dukecycling.org/road/road-routes", // Reference to original MapMyRide
+    // href: "https://www.mapmyride.com/routes/view/[route-id]", // Need specific MapMyRide URL
   },
   {
     miles: 27,
     name: "Tour of Orange County",
     description: "Quick sampler of quiet Orange County roads with rolling terrain.",
-    href: "https://dukecycling.org/road/road-routes",
+    // href: "https://www.mapmyride.com/routes/view/[route-id]", // Need specific MapMyRide URL
   },
   {
     miles: 31,
     name: "NC10 – Lawrence – St. Mary's",
     description: "Steady ride north of campus using NC-10 connectors and St. Mary's finish.",
-    href: "https://dukecycling.org/road/road-routes",
+    // href: "https://www.mapmyride.com/routes/view/[route-id]", // Need specific MapMyRide URL
   },
   {
     miles: 34,
     name: "NC10 – NHC – Dairyland – Rogers – Eubanks – Siani",
     description: "Popular Chapel Hill corridor with Dairyland and Rogers rollers; moderate.",
-    href: "https://dukecycling.org/road/road-routes",
+    // href: "https://www.mapmyride.com/routes/view/[route-id]", // Need specific MapMyRide URL
   },
   {
     miles: 37,
     name: "Bahama",
     description: "North Durham out-and-back to Bahama with gentle climbs and fast return.",
-    href: "https://dukecycling.org/road/road-routes",
+    // href: "https://www.mapmyride.com/routes/view/[route-id]", // Need specific MapMyRide URL
   },
   {
     miles: 38,
     name: "Lake Jordan",
     description: "Scenic spin toward Jordan Lake; mostly flat to rolling.",
-    href: "https://dukecycling.org/road/road-routes",
+    // href: "https://www.mapmyride.com/routes/view/[route-id]", // Need specific MapMyRide URL
   },
   {
     miles: 40,
     name: "Johnson Mill",
     description: "Orange County loop featuring Johnson Mill Rd rollers; great tempo route.",
-    href: "https://dukecycling.org/road/road-routes",
+    // href: "https://www.mapmyride.com/routes/view/[route-id]", // Need specific MapMyRide URL
   },
   {
     miles: 40,
     name: "Butner",
     description: "Northern loop toward Butner; smooth roads and steady paceline sections.",
-    href: "https://dukecycling.org/road/road-routes",
+    // href: "https://www.mapmyride.com/routes/view/[route-id]", // Need specific MapMyRide URL
   },
   {
     miles: 58,
     name: "Hurdle Mills",
     description: "Longer endurance loop through Hurdle Mills farmland; bring snacks.",
-    href: "https://dukecycling.org/road/road-routes",
+    // href: "https://www.mapmyride.com/routes/view/[route-id]", // Need specific MapMyRide URL
   },
   {
     miles: 66,
     name: "Saxapahaw",
     description: "Classic weekend long ride to Saxapahaw with cafe stop options.",
-    href: "https://dukecycling.org/road/road-routes",
+    // href: "https://www.mapmyride.com/routes/view/[route-id]", // Need specific MapMyRide URL
   },
   {
     miles: 69,
     name: "Rougemont – Bahama",
     description: "Extended north Durham loop linking Rougemont and Bahama; punchy hills.",
-    href: "https://dukecycling.org/road/road-routes",
+    // href: "https://www.mapmyride.com/routes/view/[route-id]", // Need specific MapMyRide URL
   },
   {
     miles: 74,
     name: "The P-Ride",
     description: "Fast training route with lots of rolling terrain; best for experienced riders.",
-    href: "https://dukecycling.org/road/road-routes",
+    // href: "https://www.mapmyride.com/routes/view/[route-id]", // Need specific MapMyRide URL
   },
 ]
 
@@ -111,14 +111,20 @@ export default function RidesPage() {
                   <div className="text-sm text-slate-600">{route.miles} mi</div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <a
-                    className="btn btn-secondary text-sm"
-                    href={route.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    View details
-                  </a>
+                  {route.href ? (
+                    <a
+                      className="btn btn-secondary text-sm"
+                      href={route.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View on MapMyRide
+                    </a>
+                  ) : (
+                    <span className="btn btn-secondary text-sm opacity-50 cursor-not-allowed">
+                      MapMyRide link needed
+                    </span>
+                  )}
                 </div>
               </div>
               <p className="mt-3 text-sm text-slate-700">{route.description}</p>
@@ -127,7 +133,8 @@ export default function RidesPage() {
         </div>
         
         <p className="mt-6 text-sm text-slate-600">
-          Source: <a className="text-duke-700 hover:underline" href="https://dukecycling.org/road/road-routes" target="_blank" rel="noreferrer">Duke Cycling Road Routes</a>. Individual MapMyRide links available on the original site.
+          Source: <a className="text-duke-700 hover:underline" href="https://dukecycling.org/road/road-routes" target="_blank" rel="noreferrer">Duke Cycling Road Routes</a>. 
+          MapMyRide links will be added to enable GPX downloads and detailed route viewing.
         </p>
       </div>
     </div>
