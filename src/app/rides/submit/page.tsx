@@ -45,7 +45,7 @@ export default function SubmitRidePage() {
               route: formData.route,
               distance: formData.distance,
               notes: formData.notes,
-              approved: false // Requires admin approval
+              approved: true // Auto-approve rides for immediate display
             }
           ])
 
@@ -79,7 +79,7 @@ export default function SubmitRidePage() {
           notes: formData.notes,
           database_saved: databaseSaved,
           message: databaseSaved 
-            ? 'New ride submitted and saved to database - check admin panel for approval' 
+            ? 'New ride submitted and automatically published to the website' 
             : 'New ride submitted via email - database not available'
         }),
       });

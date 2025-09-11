@@ -47,9 +47,20 @@ export default async function RideList() {
   const today = rides.filter((r: Ride)=> isSameDay(new Date(r.start), now))
   const week = rides.filter((r: Ride)=> isThisWeek(new Date(r.start)))
   const byDay = groupByDay(week)
+  
+  // Show message if database isn't configured
+  const isDatabaseConfigured = !!supabase;
 
   return (
     <div className="space-y-8">
+      {!isDatabaseConfigured && (
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+          <h3 className="font-semibold text-blue-900">Ride Submissions</h3>
+          <p className="text-blue-800 text-sm mt-1">
+            Submitted rides will appear here once the database is configured. In the meantime, ride submissions are being sent via email.
+          </p>
+        </div>
+      )}
       <div>
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Today</h2>
