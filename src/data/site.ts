@@ -3,7 +3,7 @@ export type NavItem = { label: string; href: string };
 export const site = {
   name: "Duke Club Cycling",
   tagline: "Ride. Race. Community.",
-  email: "duke.cycling@duke.edu",
+  email: "clubcycling@duke.edu",
   instagram: "https://instagram.com/dukecycling",
   strava: "https://www.strava.com/clubs/dukecycling",
   discord: "",

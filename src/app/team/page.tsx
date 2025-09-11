@@ -1,6 +1,12 @@
 export default function TeamPage() {
   const officers = [
-    { name: "President", person: "TBD" },
+    { 
+      name: "President", 
+      person: "Westley Kleinman",
+      details: "Sophomore, from Hot Springs, Arkansas",
+      email: "Westley.Kleinman@duke.edu",
+      phone: "501-701-7973"
+    },
     { name: "Treasurer", person: "TBD" },
     { name: "Safety Officer", person: "TBD" },
   ]
@@ -15,6 +21,23 @@ export default function TeamPage() {
           <div key={o.name} className="rounded-lg border p-4">
             <div className="text-slate-500 text-sm">{o.name}</div>
             <div className="font-medium">{o.person}</div>
+            {o.details && (
+              <div className="text-sm text-slate-600 mt-1">{o.details}</div>
+            )}
+            {o.email && (
+              <div className="text-sm text-duke-700 mt-2">
+                <a href={`mailto:${o.email}`} className="hover:underline">
+                  {o.email}
+                </a>
+              </div>
+            )}
+            {o.phone && (
+              <div className="text-sm text-slate-600 mt-1">
+                <a href={`tel:${o.phone}`} className="hover:underline">
+                  {o.phone}
+                </a>
+              </div>
+            )}
           </div>
         ))}
       </div>
