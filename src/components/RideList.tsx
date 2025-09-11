@@ -5,29 +5,39 @@ import type { Ride } from "@/types"
 
 // server component
 async function getApprovedRides(): Promise<Ride[]> {
-  const { data: rides, error } = await supabase
-    .from('rides')
-    .select('*')
-    .eq('approved', true)
-    .order('start_time', { ascending: true })
-
-  if (error) {
-    console.error('Error fetching rides:', error)
+  // During build time, return empty array to prevent build failures
+  if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY === 'dummy-key-for-build') {
     return []
   }
 
-  // Convert database format to component format
-  return (rides || []).map(dbRide => ({
-    id: String(dbRide.id),
-    title: dbRide.title,
-    start: dbRide.start_time,
-    type: dbRide.type,
-    pace: dbRide.pace,
-    startLocation: dbRide.location,
-    routeUrl: dbRide.route,
-    distanceMiles: dbRide.distance ? parseFloat(dbRide.distance) : undefined,
-    notes: dbRide.notes
-  }))
+  try {
+    const { data: rides, error } = await supabase
+      .from('rides')
+      .select('*')
+      .eq('approved', true)
+      .order('start_time', { ascending: true })
+
+    if (error) {
+      console.error('Error fetching rides:', error)
+      return []
+    }
+
+    // Convert database format to component format
+    return (rides || []).map(dbRide => ({
+      id: String(dbRide.id),
+      title: dbRide.title,
+      start: dbRide.start_time,
+      type: dbRide.type,
+      pace: dbRide.pace,
+      startLocation: dbRide.location,
+      routeUrl: dbRide.route,
+      distanceMiles: dbRide.distance ? parseFloat(dbRide.distance) : undefined,
+      notes: dbRide.notes
+    }))
+  } catch (error) {
+    console.error('Error fetching rides:', error)
+    return []
+  }
 }
 
 export default async function RideList() {
