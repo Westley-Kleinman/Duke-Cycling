@@ -38,9 +38,9 @@ export default function TeamPage() {
                 <Image
                   src={o.photo}
                   alt={`${o.person} - ${o.name}`}
-                  width={200}
-                  height={200}
-                  className="w-full h-48 object-cover rounded-lg"
+                  width={400}
+                  height={600}
+                  className="w-full h-auto object-contain rounded-lg"
                 />
               </div>
             )}
