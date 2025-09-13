@@ -38,9 +38,9 @@ export default function HistoryPage() {
         </p>
         <ul className="list-disc pl-6 text-blue-100 space-y-1 mt-4">
           <li><strong>Team Time Trial National Champions:</strong> Rob Ferris, Matt Howe, Mike Mulvihill, and Matt Rinehart</li>
-          <li><strong>Individual National Champion:</strong> Mike Mulvihill won the men's criterium, defeating 90+ riders</li>
+          <li><strong>Individual National Champion:</strong> Mike Mulvihill won the men&apos;s criterium, defeating 90+ riders</li>
           <li>Won the ACCC Division II season omnium (conference champions)</li>
-          <li>Men's A TTT, Women's B TTT, and Women's C TTT wins at Conference Championships</li>
+          <li>Men&apos;s A TTT, Women&apos;s B TTT, and Women&apos;s C TTT wins at Conference Championships</li>
           <li>Five riders finished in the top 30 at the national road race, with Matt Howe placing 6th</li>
         </ul>
         <div className="mt-4">
@@ -58,10 +58,10 @@ export default function HistoryPage() {
       <section className="mt-8 space-y-3">
         <h2 className="text-xl font-semibold">2014 Collegiate Road Nationals (Richmond, VA)</h2>
         <ul className="list-disc pl-6 text-slate-700 space-y-1">
-          <li>Men's TTT: 6th (Division II)</li>
-          <li>Women's TTT: 8th (Division II)</li>
+          <li>Men&apos;s TTT: 6th (Division II)</li>
+          <li>Women&apos;s TTT: 8th (Division II)</li>
           <li>Road Race: Matt Howe 8th, Kaleb Naegeli 15th, Eoin McDonnell 22nd</li>
-          <li>Men's team won the combined road race score; overall team moved from 10th to 6th</li>
+          <li>Men&apos;s team won the combined road race score; overall team moved from 10th to 6th</li>
         </ul>
         <p className="text-sm text-slate-600">
           Source: <a className="text-duke-700 hover:underline" href="https://dukecycling.org/road/road-race-reports/146-2014-collegiate-nationals" target="_blank" rel="noreferrer">2014 Duke Cycling race report</a>
@@ -71,7 +71,7 @@ export default function HistoryPage() {
       <section className="mt-8">
         <h2 className="text-xl font-semibold">The Future</h2>
         <p className="text-slate-700">
-          We're working to rebuild Duke Cycling's competitive program and return to our championship form. 
+          We&apos;re working to rebuild Duke Cycling&apos;s competitive program and return to our championship form. 
           If you have details on additional national titles, podiums, photos, or race results from our history, 
           please email duke.cycling@duke.edu to help us preserve our legacy.
         </p>

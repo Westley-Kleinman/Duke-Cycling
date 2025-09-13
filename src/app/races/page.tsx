@@ -11,8 +11,8 @@ export default function RacesPage(){
       <div className="mt-8 p-6 bg-blue-50 rounded-xl border border-blue-200">
         <h2 className="font-bold text-blue-900 mb-2">Interested in Racing?</h2>
         <p className="text-blue-800 text-sm">
-          If you're interested in competitive cycling or want to help organize races, 
-          reach out to our officers. We're always looking for motivated riders to join our racing efforts!
+          If you&apos;re interested in competitive cycling or want to help organize races, 
+          reach out to our officers. We&apos;re always looking for motivated riders to join our racing efforts!
         </p>
       </div>
     </div>
