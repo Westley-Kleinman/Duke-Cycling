@@ -222,10 +222,12 @@ export default function SubmitRidePage() {
                   onChange={handleChange}
                   className="w-full px-5 py-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900 font-medium bg-white"
                 >
-                  <option value="A">A (21+ mph)</option>
-                  <option value="B">B (18-21 mph)</option>
-                  <option value="C">C (15-18 mph)</option>
-                  <option value="D">D (Under 15 mph)</option>
+                  <option value="5-7">5-7 mph (Recovery/Social)</option>
+                  <option value="7-10">7-10 mph (Easy Social)</option>
+                  <option value="10-13">10-13 mph (Casual)</option>
+                  <option value="13-16">13-16 mph (Moderate)</option>
+                  <option value="16-20">16-20 mph (Brisk)</option>
+                  <option value="20+">20+ mph (Fast/Training)</option>
                   <option value="all">All Paces</option>
                 </select>
               </div>

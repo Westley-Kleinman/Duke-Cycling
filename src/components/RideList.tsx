@@ -106,9 +106,8 @@ export default function RideList() {
   const isDatabaseConfigured = !!supabase;
   const now = new Date()
   
-  // DEBUG: Let's show ALL rides for now, not just today/week
   const today = rides.filter((r: Ride) => isSameDay(new Date(r.start), now))
-  const week = rides // Show ALL rides temporarily
+  const week = rides.filter((r: Ride) => isThisWeek(new Date(r.start)))
   const byDay = groupByDay(week)
 
   // Debug: log the rides and their dates
@@ -184,7 +183,7 @@ export default function RideList() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">All Rides (Debug Mode)</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-6">This Week</h2>
             <div className="space-y-8">
               {Object.entries(byDay).map(([day, list]) => (
                 <div key={day}>

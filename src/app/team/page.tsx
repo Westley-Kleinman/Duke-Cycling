@@ -7,8 +7,18 @@ export default function TeamPage() {
       email: "Westley.Kleinman@duke.edu",
       phone: "501-701-7973"
     },
-    { name: "Treasurer", person: "TBD" },
-    { name: "Safety Officer", person: "TBD" },
+    { 
+      name: "Treasurer", 
+      person: "Hannah Groos",
+      details: "Senior",
+      email: "hmg29@duke.edu"
+    },
+    { 
+      name: "Safety Officer", 
+      person: "Shreyas",
+      details: "Senior",
+      email: "sbk24@duke.edu"
+    },
   ]
   return (
     <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-12">

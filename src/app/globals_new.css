@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  /* Duke University brand colors and gradients */
+  .duke-blue {
+    @apply text-[#001a57];
+  }
+
+  .bg-duke-blue {
+    @apply bg-[#001a57];
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #001a57 0%, #2563eb 50%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Navigation styles */
+  .nav {
+    @apply bg-white/95 backdrop-blur-xl border-b border-slate-200 sticky top-0 z-50 py-4;
+  }
+
+  .nav-container {
+    @apply flex justify-between items-center;
+  }
+
+  .nav-brand {
+    @apply text-2xl font-bold text-[#001a57] no-underline;
+  }
+
+  .nav-links {
+    @apply flex gap-8 list-none;
+  }
+
+  .nav-link {
+    @apply block px-4 py-2 text-slate-600 no-underline font-medium rounded-lg transition-all duration-200;
+  }
+
+  .nav-link:hover {
+    @apply text-[#001a57] bg-slate-100;
+  }
+
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold no-underline transition-all duration-200 cursor-pointer border-none text-base;
+  }
+
+  .btn-primary {
+    @apply text-white shadow-lg;
+    background: linear-gradient(135deg, #001a57 0%, #1e40af 100%);
+    box-shadow: 0 4px 14px 0 rgba(0, 26, 87, 0.25);
+  }
+
+  .btn-primary:hover {
+    @apply transform -translate-y-0.5;
+    box-shadow: 0 8px 25px 0 rgba(0, 26, 87, 0.35);
+  }
+
+  .btn-secondary {
+    @apply bg-white text-[#001a57] border-2 border-slate-200 shadow-sm;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-slate-50 border-slate-300 transform -translate-y-0.5 shadow-md;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-2xl p-8 shadow-lg border border-slate-100 transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply transform -translate-y-1 shadow-xl border-slate-200;
+  }
+
+  /* Hero section */
+  .hero {
+    @apply py-20 text-center relative overflow-hidden;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 45%, #d6dee6 100%);
+  }
+
+  .hero-content {
+    @apply relative z-10;
+  }
+
+  /* Grid layouts */
+  .grid-2 {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+  }
+
+  /* Form styles */
+  .form-input {
+    @apply w-full px-5 py-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900 font-medium;
+  }
+
+  .form-label {
+    @apply block text-sm font-bold text-slate-800 mb-3;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full animate-spin;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+}
+
+/* Responsive design overrides */
+@media (max-width: 768px) {
+  .nav-links {
+    @apply hidden;
+  }
+
+  .hero {
+    @apply py-16;
+  }
+
+  .hero-content h1 {
+    @apply text-3xl;
+  }
+}
