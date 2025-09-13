@@ -6,26 +6,26 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30 py-24">
+      <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30 py-16">
         <div className="container">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold text-gradient mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
               Duke Club Cycling
             </h1>
-            <p className="text-xl md:text-2xl text-slate-700 mb-12 leading-relaxed font-medium">
+            <p className="text-lg md:text-xl text-slate-700 mb-8 leading-relaxed font-medium">
               Join Duke&rsquo;s premier cycling community. Whether you&rsquo;re training for competition 
               or exploring the Triangle&rsquo;s scenic routes, we ride together as one team.
             </p>
-            <div className="flex gap-6 justify-center flex-wrap">
+            <div className="flex gap-4 justify-center flex-wrap">
               <Link 
                 href="/rides/submit" 
-                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-200 transform hover:scale-105 hover:shadow-xl"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 px-6 rounded-xl text-base transition-all duration-200 transform hover:scale-105 hover:shadow-xl"
               >
                 Submit a Ride
               </Link>
               <Link 
                 href="/calendar" 
-                className="bg-white text-blue-700 font-bold py-4 px-8 rounded-2xl text-lg border-2 border-slate-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 transform hover:scale-105"
+                className="bg-white text-blue-700 font-bold py-3 px-6 rounded-xl text-base border-2 border-slate-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 transform hover:scale-105"
               >
                 View Calendar
               </Link>
@@ -35,13 +35,13 @@ export default function Home() {
       </section>
 
       {/* Rides Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 bg-white">
         <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
               Upcoming Rides
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
               Join us for training rides, social rides, and group adventures around the Triangle area. 
               From beginner-friendly routes to competitive training sessions, there&rsquo;s something for every cyclist.
             </p>
