@@ -30,24 +30,27 @@ export default function HistoryPage() {
         </div>
       </section>
 
-      <section className="mt-8 space-y-3">
-        <h2 className="text-xl font-semibold">2013 Season Success</h2>
-        <p className="text-slate-700">
-          Following our national championship, Duke continued to dominate with conference championships and strong showings at nationals.
+      <section className="mt-8 space-y-3 bg-duke-blue text-white p-6 rounded-xl">
+        <h2 className="text-2xl font-bold">🏆 2013 Back-to-Back National Champions</h2>
+        <p className="text-blue-100">
+          Duke Cycling defended their title and won their <strong>second straight Team Time Trial National Championship</strong>, 
+          defeating Stanford, MIT, University of Colorado-Boulder, Yale, and others at Antelope Island, Utah.
         </p>
-        <ul className="list-disc pl-6 text-slate-700 space-y-1">
+        <ul className="list-disc pl-6 text-blue-100 space-y-1 mt-4">
+          <li><strong>Team Time Trial National Champions:</strong> Rob Ferris, Matt Howe, Mike Mulvihill, and Matt Rinehart</li>
+          <li><strong>Individual National Champion:</strong> Mike Mulvihill won the men's criterium, defeating 90+ riders</li>
           <li>Won the ACCC Division II season omnium (conference champions)</li>
           <li>Men's A TTT, Women's B TTT, and Women's C TTT wins at Conference Championships</li>
-          <li>Strong performance at collegiate nationals</li>
+          <li>Five riders finished in the top 30 at the national road race, with Matt Howe placing 6th</li>
         </ul>
-        <div className="mt-3">
+        <div className="mt-4">
           <a 
-            className="text-duke-700 hover:underline text-sm" 
+            className="text-blue-200 hover:text-white underline" 
             href="https://today.duke.edu/2013/05/cycling" 
             target="_blank" 
             rel="noreferrer"
           >
-            Duke Today 2013 coverage →
+            Read the full story on Duke Today →
           </a>
         </div>
       </section>
