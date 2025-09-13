@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function TeamPage() {
   const officers = [
     { 
@@ -5,7 +7,8 @@ export default function TeamPage() {
       person: "Westley Kleinman",
       details: "Sophomore, from Hot Springs, Arkansas",
       email: "Westley.Kleinman@duke.edu",
-      phone: "501-701-7973"
+      phone: "501-701-7973",
+      photo: "/images/team/westley.jpg"
     },
     { 
       name: "Treasurer", 
@@ -17,7 +20,8 @@ export default function TeamPage() {
       name: "Safety Officer", 
       person: "Shreyas",
       details: "Senior",
-      email: "sbk24@duke.edu"
+      email: "sbk24@duke.edu",
+      photo: "/images/team/shreyas.jpg"
     },
   ]
   return (
@@ -29,6 +33,17 @@ export default function TeamPage() {
       <div className="mt-6 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
         {officers.map((o) => (
           <div key={o.name} className="rounded-lg border p-4">
+            {o.photo && (
+              <div className="mb-4">
+                <Image
+                  src={o.photo}
+                  alt={`${o.person} - ${o.name}`}
+                  width={200}
+                  height={200}
+                  className="w-full h-48 object-cover rounded-lg"
+                />
+              </div>
+            )}
             <div className="text-slate-500 text-sm">{o.name}</div>
             <div className="font-medium">{o.person}</div>
             {o.details && (
