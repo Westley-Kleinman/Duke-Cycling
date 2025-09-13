@@ -8,7 +8,7 @@ export default function TeamPage() {
       details: "Sophomore, from Hot Springs, Arkansas",
       email: "Westley.Kleinman@duke.edu",
       phone: "501-701-7973",
-      photo: "/images/team/westley.jpg"
+      photo: "/images/West.jpeg"
     },
     { 
       name: "Treasurer", 
@@ -21,7 +21,7 @@ export default function TeamPage() {
       person: "Shreyas",
       details: "Senior",
       email: "sbk24@duke.edu",
-      photo: "/images/team/shreyas.jpg"
+      photo: "/images/Shreyas.JPG"
     },
   ]
   return (
