@@ -38,7 +38,7 @@ export default function SubmitRidePage() {
           .insert([
             {
               title: formData.title,
-              start_time: formData.start,
+              start_time: new Date(formData.start).toISOString(), // Convert to proper UTC ISO string
               type: formData.type,
               pace: formData.pace,
               location: formData.location,
@@ -70,7 +70,7 @@ export default function SubmitRidePage() {
         body: JSON.stringify({
           subject: `New Ride Submission: ${formData.title}`,
           title: formData.title,
-          start_time: formData.start,
+          start_time: new Date(formData.start).toISOString(), // Convert to proper UTC ISO string
           type: formData.type,
           pace: formData.pace,
           location: formData.location,
