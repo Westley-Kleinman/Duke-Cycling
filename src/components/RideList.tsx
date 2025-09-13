@@ -105,15 +105,18 @@ export default function RideList() {
   // Show database status if no rides but database is configured
   const isDatabaseConfigured = !!supabase;
   const now = new Date()
+  
+  // DEBUG: Let's show ALL rides for now, not just today/week
   const today = rides.filter((r: Ride) => isSameDay(new Date(r.start), now))
-  const week = rides.filter((r: Ride) => isThisWeek(new Date(r.start)))
+  const week = rides // Show ALL rides temporarily
   const byDay = groupByDay(week)
 
   // Debug: log the rides and their dates
-  console.log('All rides:', rides.map(r => ({ title: r.title, start: r.start, date: new Date(r.start) })))
+  console.log('All rides:', rides.map(r => ({ title: r.title, start: r.start, date: new Date(r.start), localDate: new Date(r.start).toString() })))
   console.log('Today rides:', today.length)
-  console.log('Week rides:', week.length)
+  console.log('Week rides (showing all):', week.length)
   console.log('Grouped by day:', byDay)
+  console.log('Current time:', now.toString())
 
   return (
     <div className="space-y-12">
@@ -181,7 +184,7 @@ export default function RideList() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">This Week</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-6">All Rides (Debug Mode)</h2>
             <div className="space-y-8">
               {Object.entries(byDay).map(([day, list]) => (
                 <div key={day}>
