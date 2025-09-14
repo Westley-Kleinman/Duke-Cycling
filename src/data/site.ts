@@ -12,6 +12,7 @@ export const site = {
   nav: [
   { label: "Home", href: "/" },
   { label: "Rides", href: "/rides" },
+  { label: "Routes", href: "/routes" },
   { label: "Races", href: "/races" },
   { label: "History", href: "/history" },
   { label: "Team", href: "/team" },
