@@ -33,7 +33,7 @@ export default function TeamPage() {
       <div className="mt-6 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
         {officers.map((o) => (
           <div key={o.name} className="rounded-lg border p-4">
-            <div className="flex gap-3 items-start">
+            <div className="flex gap-2 items-start">
               {/* Photo on left */}
               {o.photo && (
                 <div className="flex-shrink-0">
@@ -42,7 +42,7 @@ export default function TeamPage() {
                     alt={`${o.person} - ${o.name}`}
                     width={400}
                     height={600}
-                    className="w-20 h-auto object-contain rounded-lg"
+                    className="w-16 sm:w-20 md:w-24 lg:w-28 h-auto object-contain rounded-lg"
                   />
                 </div>
               )}
@@ -57,7 +57,7 @@ export default function TeamPage() {
                 <div className="space-y-0.5">
                   {o.email && (
                     <div className="text-xs text-duke-700">
-                      <a href={`mailto:${o.email}`} className="hover:underline">
+                      <a href={`mailto:${o.email}`} className="hover:underline break-all">
                         {o.email}
                       </a>
                     </div>
