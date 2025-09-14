@@ -8,7 +8,6 @@ export const site = {
   strava: "https://www.strava.com/clubs/dukecycling",
   discord: "",
   address: "Duke University, Durham, NC",
-  calendarEmbedUrl: "", // e.g. public Google Calendar embed URL
   nav: [
   { label: "Home", href: "/" },
   { label: "Rides", href: "/rides" },

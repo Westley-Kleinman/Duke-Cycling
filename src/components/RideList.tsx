@@ -10,22 +10,12 @@ export default function RideList() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  // Debug info for production
-  const [debugInfo, setDebugInfo] = useState<string>('')
-
   useEffect(() => {
     async function fetchRides() {
-      // Debug environment variable availability
-      const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-      const hasSupabase = !!supabase
-      const keyExists = !!supabaseKey
-      
-      setDebugInfo(`Supabase client: ${hasSupabase ? 'Available' : 'Not available'}, Key exists: ${keyExists ? 'Yes' : 'No'}`)
-      
       // If Supabase is not configured, return empty array
       if (!supabase) {
         console.warn('Supabase not configured, returning empty rides list')
-        setError(`Database not configured. Debug: ${debugInfo}`)
+        setError('Database not configured.')
         setLoading(false)
         return
       }
@@ -94,9 +84,6 @@ export default function RideList() {
             <strong className="font-bold">Error Loading Rides</strong>
           </div>
           <p className="text-sm">{error}</p>
-          {debugInfo && (
-            <p className="text-xs mt-2 opacity-75">Debug: {debugInfo}</p>
-          )}
         </div>
       </div>
     )
@@ -145,9 +132,6 @@ export default function RideList() {
             <p className="text-slate-600 mb-8 leading-relaxed">
               There are currently no upcoming rides on the calendar. Check back soon or submit a ride to get things started!
             </p>
-            {debugInfo && (
-              <p className="text-xs text-slate-500 mb-4">Debug: {debugInfo}</p>
-            )}
             <a
               href="/rides/submit"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-105"
