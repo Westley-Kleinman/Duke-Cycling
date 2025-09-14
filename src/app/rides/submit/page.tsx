@@ -13,7 +13,10 @@ export default function SubmitRidePage() {
     location: '',
     route: '',
     notes: '',
-    distance: ''
+    distance: '',
+    organizer_name: '',
+    organizer_email: '',
+    organizer_phone: ''
   })
   
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -45,6 +48,9 @@ export default function SubmitRidePage() {
               route: formData.route,
               distance: formData.distance,
               notes: formData.notes,
+              organizer_name: formData.organizer_name || null,
+              organizer_email: formData.organizer_email || null,
+              organizer_phone: formData.organizer_phone || null,
               approved: true // Auto-approve rides for immediate display
             }
           ])
@@ -77,6 +83,9 @@ export default function SubmitRidePage() {
           route: formData.route,
           distance: formData.distance,
           notes: formData.notes,
+          organizer_name: formData.organizer_name,
+          organizer_email: formData.organizer_email,
+          organizer_phone: formData.organizer_phone,
           database_saved: databaseSaved,
           message: databaseSaved 
             ? 'New ride submitted and automatically published to the website' 
@@ -300,6 +309,70 @@ export default function SubmitRidePage() {
                   className="w-full px-5 py-4 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900 font-medium resize-none"
                   placeholder="e.g., No-drop ride, bring lights for early morning start, coffee stop planned..."
                 ></textarea>
+              </div>
+            </div>
+
+            {/* Organizer Contact Information Section */}
+            <div className="mt-8 p-6 bg-slate-50 rounded-2xl border border-slate-200">
+              <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                <svg className="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                Organizer Contact Information
+                <span className="text-slate-500 font-normal text-sm ml-1">(optional)</span>
+              </h3>
+              <p className="text-sm text-slate-600 mb-6">
+                Providing your contact information helps other riders reach out with questions about the ride.
+              </p>
+              
+              <div className="grid md:grid-cols-3 gap-6">
+                {/* Organizer Name */}
+                <div>
+                  <label htmlFor="organizer_name" className="block text-sm font-medium text-slate-700 mb-2">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    id="organizer_name"
+                    name="organizer_name"
+                    value={formData.organizer_name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900"
+                    placeholder="e.g., John Smith"
+                  />
+                </div>
+
+                {/* Organizer Email */}
+                <div>
+                  <label htmlFor="organizer_email" className="block text-sm font-medium text-slate-700 mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="organizer_email"
+                    name="organizer_email"
+                    value={formData.organizer_email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900"
+                    placeholder="e.g., john@duke.edu"
+                  />
+                </div>
+
+                {/* Organizer Phone */}
+                <div>
+                  <label htmlFor="organizer_phone" className="block text-sm font-medium text-slate-700 mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="organizer_phone"
+                    name="organizer_phone"
+                    value={formData.organizer_phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-50 focus:border-blue-500 transition-all duration-200 text-slate-900"
+                    placeholder="e.g., (919) 123-4567"
+                  />
+                </div>
               </div>
             </div>
 
