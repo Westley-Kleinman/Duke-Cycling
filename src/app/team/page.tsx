@@ -30,10 +30,10 @@ export default function TeamPage() {
       <p className="mt-3 text-slate-700 max-w-prose">
         Student officers and ride leaders keep the club rolling.
       </p>
-      <div className="mt-6 space-y-6">
+      <div className="mt-6 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
         {officers.map((o) => (
-          <div key={o.name} className="rounded-lg border p-6">
-            <div className="flex flex-col sm:flex-row gap-6 items-start">
+          <div key={o.name} className="rounded-lg border p-4">
+            <div className="flex gap-3 items-start">
               {/* Photo on left */}
               {o.photo && (
                 <div className="flex-shrink-0">
@@ -42,28 +42,28 @@ export default function TeamPage() {
                     alt={`${o.person} - ${o.name}`}
                     width={400}
                     height={600}
-                    className="w-32 h-auto object-contain rounded-lg"
+                    className="w-20 h-auto object-contain rounded-lg"
                   />
                 </div>
               )}
               
               {/* Content on right */}
               <div className="flex-1 min-w-0">
-                <div className="text-slate-500 text-sm">{o.name}</div>
-                <div className="font-bold text-xl mb-2">{o.person}</div>
+                <div className="text-slate-500 text-xs">{o.name}</div>
+                <div className="font-semibold text-sm mb-1">{o.person}</div>
                 {o.details && (
-                  <div className="text-base text-slate-600 mb-3">{o.details}</div>
+                  <div className="text-xs text-slate-600 mb-2">{o.details}</div>
                 )}
-                <div className="space-y-1">
+                <div className="space-y-0.5">
                   {o.email && (
-                    <div className="text-sm text-duke-700">
+                    <div className="text-xs text-duke-700">
                       <a href={`mailto:${o.email}`} className="hover:underline">
                         {o.email}
                       </a>
                     </div>
                   )}
                   {o.phone && (
-                    <div className="text-sm text-slate-600">
+                    <div className="text-xs text-slate-600">
                       <a href={`tel:${o.phone}`} className="hover:underline">
                         {o.phone}
                       </a>
