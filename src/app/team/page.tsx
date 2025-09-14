@@ -40,7 +40,7 @@ export default function TeamPage() {
                   alt={`${o.person} - ${o.name}`}
                   width={400}
                   height={600}
-                  className="w-full h-auto object-contain rounded-lg"
+                  className="max-w-[120px] h-auto object-contain rounded-lg mx-auto"
                 />
               </div>
             )}

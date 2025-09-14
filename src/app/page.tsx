@@ -16,6 +16,9 @@ export default function Home() {
               Join Duke&rsquo;s premier cycling community. Whether you&rsquo;re training for competition 
               or exploring the Triangle&rsquo;s scenic routes, we ride together as one team.
             </p>
+            <p className="text-base text-slate-600 mb-8 leading-relaxed">
+              <strong>Note:</strong> Signing up through CampusGroups is required to participate in any Duke-organized races, practices, or official club activities.
+            </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <Link 
                 href="/rides/submit" 
@@ -29,6 +32,14 @@ export default function Home() {
               >
                 View Calendar
               </Link>
+              <a 
+                href="https://duke.campusgroups.com/DukeCycling/club_signup" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-3 px-6 rounded-xl text-base transition-all duration-200 transform hover:scale-105 hover:shadow-xl"
+              >
+                Join the Club
+              </a>
             </div>
           </div>
         </div>
