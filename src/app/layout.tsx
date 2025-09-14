@@ -19,6 +19,32 @@ export const metadata: Metadata = {
     "Official website for Duke Club Cycling. Group rides, collegiate racing, events, routes, sponsors, and how to join.",
   // Custom domain configured via GitHub Pages
   metadataBase: new URL("https://dukecycling.dev"),
+  icons: {
+    icon: [
+      {
+        url: '/favicon.ico',
+        sizes: 'any',
+      },
+      {
+        url: '/favicon-16x16.png',
+        sizes: '16x16',
+        type: 'image/png',
+      },
+      {
+        url: '/favicon-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+    ],
+    apple: '/apple-touch-icon.png',
+    shortcut: '/favicon.ico',
+    other: [
+      {
+        rel: 'manifest',
+        url: '/site.webmanifest',
+      },
+    ],
+  },
   openGraph: {
     title: site.name,
     description:

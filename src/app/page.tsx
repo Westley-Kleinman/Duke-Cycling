@@ -9,7 +9,7 @@ export default function Home() {
       <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30 py-16">
         <div className="container">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-8 leading-tight">
               Duke Club Cycling
             </h1>
             <p className="text-lg md:text-xl text-slate-700 mb-8 leading-relaxed font-medium">
@@ -49,7 +49,7 @@ export default function Home() {
       <section className="py-12 bg-white">
         <div className="container">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gradient mb-6 leading-tight">
               Upcoming Rides
             </h2>
             <p className="text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
@@ -76,7 +76,7 @@ export default function Home() {
   <section className="py-12 bg-gray-50">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gradient mb-6">
+            <h2 className="text-4xl font-bold text-gradient mb-8 leading-tight">
               Local Cycling Resources
             </h2>
             <p className="text-lg text-slate-600">
@@ -149,7 +149,7 @@ export default function Home() {
   <section className="py-12 bg-white">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gradient mb-6">
+            <h2 className="text-4xl font-bold text-gradient mb-8 leading-tight">
               Explore More
             </h2>
             <p className="text-lg text-slate-600">
