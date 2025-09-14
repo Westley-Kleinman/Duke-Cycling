@@ -10,7 +10,7 @@ export default function CalendarPage() {
         </h1>
         <p className="text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
           View all upcoming rides, training sessions, and group adventures. 
-          From beginner-friendly routes to competitive training sessions, there's something for every cyclist.
+          From beginner-friendly routes to competitive training sessions, there&rsquo;s something for every cyclist.
         </p>
       </div>
       <div>
