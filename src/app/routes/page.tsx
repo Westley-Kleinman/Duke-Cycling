@@ -25,14 +25,14 @@ const localRoutes: Route[] = [
   },
   {
     miles: 31,
-    name: "NC10 – Lawrence – St. Mary's",
+    name: "NC10-Lawrence-St. Mary's",
     description: "Steady ride north of campus using NC-10 connectors and St. Mary's finish.",
     href: "https://www.mapmyride.com/routes/view/24027962",
   },
   {
     miles: 34,
-    name: "NC10 – NHC – Dairyland – Rogers – Eubanks – Siani",
-    description: "Popular Chapel Hill corridor with Dairyland and Rogers rollers; moderate.",
+    name: "NC10-NHC-Dairyland-Rogers-Eubanks-Siani",
+    description: "Popular Chapel Hill corridor with Dairyland and Rogers rollers; moderate difficulty.",
     href: "https://www.mapmyride.com/routes/view/23346022",
   },
   {
@@ -44,7 +44,7 @@ const localRoutes: Route[] = [
   {
     miles: 38,
     name: "Lake Jordan",
-    description: "Scenic spin toward Jordan Lake; mostly flat to rolling.",
+    description: "Scenic spin toward Jordan Lake; mostly flat to rolling terrain.",
     href: "https://www.mapmyride.com/routes/view/32954556",
   },
   {
@@ -55,32 +55,32 @@ const localRoutes: Route[] = [
   },
   {
     miles: 40,
-    name: "Flat River",
-    description: "North toward Flat River with rolling hills and pastoral scenery.",
+    name: "Butner",
+    description: "Northern loop toward Butner; smooth roads and steady paceline sections.",
     href: "https://www.mapmyride.com/routes/view/25911768",
   },
   {
-    miles: 42,
-    name: "Hillsborough",
-    description: "Classic Orange County route to historic Hillsborough and back.",
+    miles: 58,
+    name: "Hurdle Mills",
+    description: "Longer endurance loop through Hurdle Mills farmland; bring snacks.",
     href: "https://www.mapmyride.com/routes/view/24328554",
   },
   {
-    miles: 50,
-    name: "Pittsboro",
-    description: "Longer southwestern loop through Chatham County to Pittsboro.",
+    miles: 66,
+    name: "Saxapahaw",
+    description: "Classic weekend long ride to Saxapahaw with cafe stop options.",
     href: "https://www.mapmyride.com/routes/view/22329112",
   },
   {
-    miles: 52,
-    name: "Creedmoor",
-    description: "Northern adventure to Creedmoor with sustained climbs and fast descents.",
+    miles: 69,
+    name: "Rougemont-Bahama",
+    description: "Extended north Durham loop linking Rougemont and Bahama; punchy hills.",
     href: "https://www.mapmyride.com/routes/view/29861528",
   },
   {
-    miles: 60,
-    name: "Chapel Hill – Carrboro – White Cross",
-    description: "Extended tour of Chapel Hill area with White Cross climb challenge.",
+    miles: 74,
+    name: "The P-Ride",
+    description: "Fast training route with lots of rolling terrain; best for experienced riders.",
     href: "https://www.mapmyride.com/routes/view/21715178",
   },
 ];
@@ -135,7 +135,7 @@ export default function RoutesPage() {
       
       <p className="mt-6 text-sm text-slate-600">
         Source: <a className="text-duke-700 hover:underline" href="https://dukecycling.org/road/road-routes" target="_blank" rel="noreferrer">Duke Cycling Road Routes</a>. 
-        Routes range from 25-60 miles and cover the scenic roads around Durham, Chapel Hill, and Orange County.
+        Routes range from 25-74 miles and cover the scenic roads around Durham, Chapel Hill, and Orange County.
       </p>
     </div>
   )
