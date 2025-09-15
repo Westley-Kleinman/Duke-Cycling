@@ -87,6 +87,49 @@ export default function RideCard({ ride }: { ride: Ride }) {
           </p>
         </div>
       )}
+      
+      {/* Organizer Contact Info */}
+      {(ride.organizerName || ride.organizerEmail || ride.organizerPhone) && (
+        <div className="pt-4 border-t border-slate-100 mt-4">
+          <div className="flex items-start gap-2 mb-2">
+            <div className="w-4 h-4 mt-0.5 flex-shrink-0">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" className="w-full h-full text-slate-400">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <div>
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Organizer</p>
+              <div className="space-y-1">
+                {ride.organizerName && (
+                  <div className="text-sm font-medium text-slate-700">
+                    {ride.organizerName}
+                  </div>
+                )}
+                {ride.organizerEmail && (
+                  <div className="text-sm text-slate-600">
+                    <a 
+                      href={`mailto:${ride.organizerEmail}`}
+                      className="hover:text-blue-600 hover:underline transition-colors"
+                    >
+                      {ride.organizerEmail}
+                    </a>
+                  </div>
+                )}
+                {ride.organizerPhone && (
+                  <div className="text-sm text-slate-600">
+                    <a 
+                      href={`tel:${ride.organizerPhone}`}
+                      className="hover:text-blue-600 hover:underline transition-colors"
+                    >
+                      {ride.organizerPhone}
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

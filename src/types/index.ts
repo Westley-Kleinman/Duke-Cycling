@@ -12,4 +12,7 @@ export interface Ride {
   routeUrl?: string
   leader?: string
   notes?: string
+  organizerName?: string
+  organizerEmail?: string
+  organizerPhone?: string
 }

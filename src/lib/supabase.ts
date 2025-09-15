@@ -23,6 +23,9 @@ export interface Ride {
   route: string
   distance: string
   notes?: string
+  organizer_name?: string
+  organizer_email?: string
+  organizer_phone?: string
   approved: boolean
   created_at?: string
 }

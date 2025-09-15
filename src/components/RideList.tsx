@@ -44,6 +44,9 @@ export default function RideList() {
           routeUrl: dbRide.route,
           distanceMiles: dbRide.distance ? parseFloat(dbRide.distance) : undefined,
           notes: dbRide.notes,
+          organizerName: dbRide.organizer_name,
+          organizerEmail: dbRide.organizer_email,
+          organizerPhone: dbRide.organizer_phone,
         }))
 
         setRides(formattedRides)
