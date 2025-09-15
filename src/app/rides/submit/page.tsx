@@ -9,7 +9,7 @@ export default function SubmitRidePage() {
     title: '',
     start: '',
     type: 'social',
-    pace: 'B',
+    pace: '13-16',
     location: '',
     route: '',
     notes: '',
@@ -21,6 +21,7 @@ export default function SubmitRidePage() {
   
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,8 +36,19 @@ export default function SubmitRidePage() {
       // Try to save to Supabase database if available
       if (supabase) {
         console.log('Attempting to save to database...')
+        console.log('Form data being submitted:', {
+          title: formData.title,
+          start_time: new Date(formData.start).toISOString(),
+          type: formData.type,
+          pace: formData.pace,
+          location: formData.location,
+          route: formData.route,
+          distance: formData.distance,
+          notes: formData.notes,
+          approved: true
+        });
         
-        const { error } = await supabase
+        const { data: insertData, error } = await supabase
           .from('rides')
           .insert([
             {
@@ -57,8 +69,11 @@ export default function SubmitRidePage() {
 
         if (error) {
           console.error('Supabase error:', error)
+          console.error('Error details:', JSON.stringify(error, null, 2))
+          setErrorMessage(`Database error: ${error.message || 'Unknown error'}`)
         } else {
           console.log('Successfully saved to database')
+          console.log('Insert result:', insertData)
           databaseSaved = true;
         }
       } else {
@@ -107,6 +122,7 @@ export default function SubmitRidePage() {
       
     } catch (error) {
       console.error('Form submission error:', error)
+      setErrorMessage(`Submission failed: ${error instanceof Error ? error.message : 'Unknown error'}`)
       setSubmitStatus('error')
       setIsSubmitting(false)
     }
@@ -159,7 +175,7 @@ export default function SubmitRidePage() {
                 </div>
                 <div>
                   <strong className="font-bold">Error!</strong>
-                  <span className="ml-2">Something went wrong. Please try again or contact us directly.</span>
+                  <span className="ml-2">{errorMessage || 'Something went wrong. Please try again or contact us directly.'}</span>
                 </div>
               </div>
             )}
