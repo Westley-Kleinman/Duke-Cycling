@@ -11,7 +11,8 @@ export default function TeamPage() {
       phone: "501-701-7973",
       photo: {
         src: "/images/West.jpeg",
-        alt: "Westley Kleinman on a gravel bike"
+        alt: "Westley Kleinman on a gravel bike",
+        focal: "top"
       }
     },
     {
@@ -20,9 +21,9 @@ export default function TeamPage() {
       details:
         "I'm a freshman from Greenville, South Carolina, and I've been racing bikes for almost nine years—including NICA, the US Cup circuit, and USAC Nationals. Two state titles later, my favorite rides are still in Dupont State Forest, and I'm excited to keep the club fun and always rolling.",
       photo: {
-        src: "/images/jack.jpg",
+        src: "/images/Jack.jpg",
         alt: "Jack Stapleton racing down a rocky singletrack section",
-        focal: "top"
+        focal: "center"
       }
     },
     {
@@ -38,7 +39,8 @@ export default function TeamPage() {
       email: "sbk24@duke.edu",
       photo: {
         src: "/images/Shreyas.JPG",
-        alt: "Shreyas on a road bike"
+        alt: "Shreyas on a road bike",
+        focal: "top"
       }
     }
   ]
@@ -48,15 +50,15 @@ export default function TeamPage() {
       <p className="mt-3 text-slate-700 max-w-prose">
         Student officers and ride leaders keep the club rolling.
       </p>
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3 auto-rows-fr">
+      <div className="mt-10 grid gap-6 grid-cols-1 sm:grid-cols-2 auto-rows-fr">
         {officers.map((o) => (
           <article
             key={`${o.person}-${o.name}`}
             className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 flex flex-col h-full"
           >
             {o.photo && (
-              <div className="w-full max-w-[220px] mx-auto">
-                <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100 shadow-inner">
+              <div className="w-full max-w-[240px] mx-auto">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-slate-100">
                   <Image
                     src={o.photo.src}
                     alt={o.photo.alt}
