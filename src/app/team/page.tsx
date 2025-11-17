@@ -2,27 +2,34 @@ import Image from 'next/image'
 
 export default function TeamPage() {
   const officers = [
-    { 
-      name: "President", 
+    {
+      name: "President",
       person: "Westley Kleinman",
-      details: "Sophomore, from Hot Springs, Arkansas",
+      details:
+        "I'm Westley Kleinman, a sophomore mechanical engineering major who spent four seasons racing NICA, now helping coach when I'm back home. I've raced for the MaccabiUSA national team, won the Arkansas state cyclocross championship, and just love finding any excuse to ride.",
       email: "Westley.Kleinman@duke.edu",
       phone: "501-701-7973",
       photo: "/images/West.jpeg"
     },
-    { 
-      name: "Treasurer", 
-      person: "Hannah Groos",
-      details: "Senior",
-      email: "hmg29@duke.edu"
+    {
+      name: "Race & Event Coordinator",
+      person: "Jack Stapleton",
+      details:
+        "I'm a freshman from Greenville, South Carolina, and I've been racing bikes for almost nine years—including NICA, the US Cup circuit, and USAC Nationals. Two state titles later, my favorite rides are still in Dupont State Forest, and I'm excited to keep the club fun and always rolling."
     },
-    { 
-      name: "Safety Officer", 
+    {
+      name: "Social Media & Outreach",
+      person: "Gia Weaver",
+      details:
+        "Gia makes sure every ride, race, and service project gets the spotlight it deserves by leading our outreach and social channels."
+    },
+    {
+      name: "Safety Officer",
       person: "Shreyas",
       details: "Senior",
       email: "sbk24@duke.edu",
       photo: "/images/Shreyas.JPG"
-    },
+    }
   ]
   return (
     <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-12">
