@@ -15,7 +15,9 @@ export default function TeamPage() {
       name: "Race & Event Coordinator",
       person: "Jack Stapleton",
       details:
-        "I'm a freshman from Greenville, South Carolina, and I've been racing bikes for almost nine years—including NICA, the US Cup circuit, and USAC Nationals. Two state titles later, my favorite rides are still in Dupont State Forest, and I'm excited to keep the club fun and always rolling."
+        "I'm a freshman from Greenville, South Carolina, and I've been racing bikes for almost nine years—including NICA, the US Cup circuit, and USAC Nationals. Two state titles later, my favorite rides are still in Dupont State Forest, and I'm excited to keep the club fun and always rolling.",
+      photo: "/images/jack.jpg",
+      photoAlt: "Jack Stapleton racing down a rocky singletrack section"
     },
     {
       name: "Social Media & Outreach",
@@ -37,49 +39,56 @@ export default function TeamPage() {
       <p className="mt-3 text-slate-700 max-w-prose">
         Student officers and ride leaders keep the club rolling.
       </p>
-      <div className="mt-6 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-3 auto-rows-fr">
         {officers.map((o) => (
-          <div key={o.name} className="rounded-lg border p-4">
-            <div className="flex gap-2 items-start">
-              {/* Photo on left */}
-              {o.photo && (
-                <div className="flex-shrink-0">
-                  <Image
-                    src={o.photo}
-                    alt={`${o.person} - ${o.name}`}
-                    width={400}
-                    height={600}
-                    className="w-16 sm:w-20 md:w-24 lg:w-28 h-auto object-contain rounded-lg"
-                  />
-                </div>
+          <article
+            key={`${o.person}-${o.name}`}
+            className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 flex flex-col h-full"
+          >
+            {o.photo && (
+              <div className="relative w-full aspect-[3/4] overflow-hidden rounded-xl bg-slate-100">
+                <Image
+                  src={o.photo}
+                  alt={o.photoAlt ?? `${o.person} - ${o.name}`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                  className="object-cover"
+                  priority={o.name === "President"}
+                />
+              </div>
+            )}
+
+            <div className="flex flex-col flex-1 pt-4">
+              <div className="text-duke-700 text-xs font-semibold tracking-wide uppercase">
+                {o.name}
+              </div>
+              <div className="text-lg font-semibold text-slate-900 mt-1">{o.person}</div>
+              {o.details && (
+                <p className="text-sm text-slate-600 mt-3 leading-relaxed">
+                  {o.details}
+                </p>
               )}
-              
-              {/* Content on right */}
-              <div className="flex-1 min-w-0">
-                <div className="text-slate-500 text-xs">{o.name}</div>
-                <div className="font-semibold text-sm mb-1">{o.person}</div>
-                {o.details && (
-                  <div className="text-xs text-slate-600 mb-2">{o.details}</div>
+
+              <div className="mt-auto pt-4 text-sm text-slate-700 space-y-1">
+                {o.email && (
+                  <div>
+                    <span className="sr-only">Email</span>
+                    <a href={`mailto:${o.email}`} className="hover:underline break-words">
+                      {o.email}
+                    </a>
+                  </div>
                 )}
-                <div className="space-y-0.5">
-                  {o.email && (
-                    <div className="text-xs text-duke-700">
-                      <a href={`mailto:${o.email}`} className="hover:underline break-all">
-                        {o.email}
-                      </a>
-                    </div>
-                  )}
-                  {o.phone && (
-                    <div className="text-xs text-slate-600">
-                      <a href={`tel:${o.phone}`} className="hover:underline">
-                        {o.phone}
-                      </a>
-                    </div>
-                  )}
-                </div>
+                {o.phone && (
+                  <div>
+                    <span className="sr-only">Phone</span>
+                    <a href={`tel:${o.phone}`} className="hover:underline">
+                      {o.phone}
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>
