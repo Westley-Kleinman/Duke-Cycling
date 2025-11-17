@@ -9,15 +9,21 @@ export default function TeamPage() {
         "I'm Westley Kleinman, a sophomore mechanical engineering major who spent four seasons racing NICA, now helping coach when I'm back home. I've raced for the MaccabiUSA national team, won the Arkansas state cyclocross championship, and just love finding any excuse to ride.",
       email: "Westley.Kleinman@duke.edu",
       phone: "501-701-7973",
-      photo: "/images/West.jpeg"
+      photo: {
+        src: "/images/West.jpeg",
+        alt: "Westley Kleinman on a gravel bike"
+      }
     },
     {
       name: "Race & Event Coordinator",
       person: "Jack Stapleton",
       details:
         "I'm a freshman from Greenville, South Carolina, and I've been racing bikes for almost nine years—including NICA, the US Cup circuit, and USAC Nationals. Two state titles later, my favorite rides are still in Dupont State Forest, and I'm excited to keep the club fun and always rolling.",
-      photo: "/images/jack.jpg",
-      photoAlt: "Jack Stapleton racing down a rocky singletrack section"
+      photo: {
+        src: "/images/jack.jpg",
+        alt: "Jack Stapleton racing down a rocky singletrack section",
+        focal: "top"
+      }
     },
     {
       name: "Social Media & Outreach",
@@ -30,7 +36,10 @@ export default function TeamPage() {
       person: "Shreyas",
       details: "Senior",
       email: "sbk24@duke.edu",
-      photo: "/images/Shreyas.JPG"
+      photo: {
+        src: "/images/Shreyas.JPG",
+        alt: "Shreyas on a road bike"
+      }
     }
   ]
   return (
@@ -46,15 +55,19 @@ export default function TeamPage() {
             className="rounded-2xl border border-slate-200 bg-white shadow-sm p-6 flex flex-col h-full"
           >
             {o.photo && (
-              <div className="relative w-full aspect-[3/4] overflow-hidden rounded-xl bg-slate-100">
-                <Image
-                  src={o.photo}
-                  alt={o.photoAlt ?? `${o.person} - ${o.name}`}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  className="object-cover"
-                  priority={o.name === "President"}
-                />
+              <div className="w-full max-w-[220px] mx-auto">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-slate-100 shadow-inner">
+                  <Image
+                    src={o.photo.src}
+                    alt={o.photo.alt}
+                    fill
+                    sizes="(max-width: 640px) 60vw, (max-width: 1280px) 35vw, 240px"
+                    className={`object-cover ${
+                      o.photo.focal === "top" ? "object-top" : "object-center"
+                    }`}
+                    priority={o.name === "President"}
+                  />
+                </div>
               </div>
             )}
 
